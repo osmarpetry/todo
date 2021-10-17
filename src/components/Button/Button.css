@@ -1,0 +1,22 @@
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--white);
+  font-family: var(--font-family);
+  border: 0;
+  cursor: pointer;
+  border-radius: var(--radius);
+  padding: var(--small);
+  text-decoration: none;
+}
+
+button:hover {
+  background: var(--primary);
+}
+
+button:active,
+button[data-active='true'] {
+  opacity: 0.9;
+}

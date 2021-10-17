@@ -1,0 +1,7 @@
+li {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: var(--small);
+  align-items: center;
+  padding-bottom: var(--small);
+}

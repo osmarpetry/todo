@@ -1,0 +1,10 @@
+export const TABS = {
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED',
+  ALL: 'ALL',
+};
+
+export const STATUS = {
+  ACTIVE: TABS.ACTIVE,
+  COMPLETED: TABS.COMPLETED,
+};

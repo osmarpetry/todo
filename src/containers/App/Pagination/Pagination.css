@@ -1,0 +1,10 @@
+.pagination {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination__actions-buttons {
+  display: grid;
+  grid-gap: var(--small);
+  grid-template-columns: repeat(3, 1fr);
+}

@@ -1,0 +1,5 @@
+.form__input-wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 3fr 1fr;
+}
