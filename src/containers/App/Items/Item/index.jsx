@@ -5,18 +5,18 @@ import Button from '../../../../components/Button';
 
 import { STATUS } from '../../../../contants';
 
-function Item({ id, status, text, onTodoClick }) {
+function Item({ item, onTodoClick }) {
   return (
     <li>
-      {status === STATUS.ACTIVE && (
-        <Button onClick={() => onTodoClick(id, STATUS.COMPLETED)}>
+      {item.status === STATUS.ACTIVE && (
+        <Button onClick={() => onTodoClick(item)}>
           Complete
         </Button>
       )}
-      {status === STATUS.COMPLETED && (
-        <Button onClick={() => onTodoClick(id, STATUS.ACTIVE)}>Undo</Button>
+      {item.status === STATUS.COMPLETED && (
+        <Button onClick={() => onTodoClick(item)}>Undo</Button>
       )}
-      {`${id} - ${text} -${status}`}
+      {`${item.id} - ${item.text} -${item.status}`}
     </li>
   );
 }

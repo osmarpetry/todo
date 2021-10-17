@@ -7,13 +7,11 @@ import Item from './Item'
 function List({ items, onTodoClick }) {
   return (
     <ul className='list'>
-      {items.map(({id, text, status}) => {
+      {items.map((item) => {
         return (
           <Item
-            key={id}
-            id={id}
-            text={text}
-            status={status}
+            key={item.id}
+            item={item}
             onTodoClick={onTodoClick}
           />
         );

@@ -26,11 +26,14 @@ function App() {
 
   const [currentTab, setCurrentTab] = useState(TABS.ACTIVE);
 
-  const items = useRef([])
+  const activeItems = useRef([])
+  const completedItems = useRef([])
   const itemsToShow =
     currentTab === TABS.ALL
-      ? items.current
-      : items.current?.filter((item) => item.status === currentTab)
+      ? [...activeItems.current, ...completedItems.current]
+      : currentTab === TABS.ACTIVE
+        ? [...activeItems.current]
+        : [...completedItems.current]
 
 
   const handleTabClick = useCallback((newTab) => {
@@ -40,7 +43,7 @@ function App() {
   );
 
   const handleAddItemToList = useCallback((text) => {
-    items.current.push({
+    activeItems.current.push({
       id: getId.next().value,
       text,
       status: STATUS.ACTIVE
@@ -53,10 +56,15 @@ function App() {
 
 
   const handleTodoClick = useCallback(
-    (id, status) => {
-      items.current = items.current.map((item) =>
-        item.id === id ? { ...item, status } : item
-      );
+    (item) => {
+      if (item.status === TABS.ACTIVE) {
+        activeItems.current = activeItems.current.filter((activeItem) => activeItem.id !== item.id)
+        completedItems.current = [...completedItems.current, { ...item, status: TABS.COMPLETED}]
+      } else if (item.status === TABS.COMPLETED) {
+        completedItems.current = completedItems.current.filter((completedItem) => completedItem.id !== item.id)
+        activeItems.current = [...activeItems.current, { ...item, status: TABS.ACTIVE}]
+      }
+
       forceUpdate();
     },
     [forceUpdate]
